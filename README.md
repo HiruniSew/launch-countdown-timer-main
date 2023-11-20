@@ -9,3 +9,6 @@ Users should be able to:
 - **Bonus**: When a number changes, make the card flip from the middle
 
 ### Screenshot
+
+
+##medium platform link :https://medium.com/@hirunisew99/javascript-variables-4da3c01abe09
