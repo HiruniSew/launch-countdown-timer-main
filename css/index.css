@@ -71,7 +71,7 @@ body {
   background-color: var(--Dark-desaturated-blue);
   filter: brightness(0.9); /*adjust the brightness of an element.*/
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1); /* curve border  in the bottom*/
 }
 
 .top {
