@@ -9,36 +9,63 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500;700&display=swap"
     />
+    <!--icon link-->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
   </head>
   <body>
-    <div class="container">
-      <img id="stars" src="\images\bg-stars.svg" alt="stars" />
-
-      <div class="centered">WE' RE LAUNCHING SOON</div>
-
-      <div class="bottom">
-        <img id="hills" src="\images\pattern-hills.svg" alt="hills" />
-
-        <!-- Social media icons-->
-        <div class="social-icons">
-          <a href="#" class="social-icon"
-            ><img src="\images\icon-facebook.svg" alt="fb" id="fb" />
-            <div class="overlay"></div>
-          </a>
-          <a href="#" class="social-icon">
-            <img
-              src="\images\icon-pinterest.svg"
-              alt="pinterest"
-              id="pinterest" />
-            <div class="overlay"></div
-          ></a>
-          <a href="#" class="social-icon"
-            ><img src="\images\icon-instagram.svg" alt="insta" id="insta" />
-          </a>
+    <main>
+      <section class="section">
+        <div class="bg">
+          <img src="/images/bg-stars.svg" alt="img" class="bg_stars" />
         </div>
-      </div>
-      <!--coutdown -->
-    </div>
+        <div class="bg">
+          <img src="/images/pattern-hills.svg" alt="img" class="bg_hills" />
+        </div>
+        <h1 class="main_title">We're launching soon</h1>
+
+        <!--coutdown-->
+        <div class="main_timer">
+          <div class="component">
+            <div class="timer" data-day>
+              <div class="top day">00</div>
+              <div class="bottom day">00</div>
+            </div>
+            <h2 class="title">Days</h2>
+          </div>
+          <div class="component">
+            <div class="timer" data-hour>
+              <div class="top hour">24</div>
+              <div class="bottom hour">24</div>
+            </div>
+            <h2 class="title">hours</h2>
+          </div>
+          <div class="component">
+            <div class="timer" data-minute>
+              <div class="top minute">59</div>
+              <div class="bottom minute">59</div>
+            </div>
+            <h2 class="title">minutes</h2>
+          </div>
+          <div class="component">
+            <div class="timer" data-second>
+              <div class="top second">59</div>
+              <div class="bottom second">59</div>
+            </div>
+            <h2 class="title">seconds</h2>
+          </div>
+        </div>
+        <div class="socials">
+          <i class="ri-facebook-box-fill"></i>
+          <i class="ri-pinterest-line"></i>
+          <i class="ri-instagram-line"></i>
+        </div>
+      </section>
+    </main>
 
     <script src="\js\index.js"></script>
   </body>

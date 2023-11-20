@@ -1,135 +1,257 @@
-body {
+/* variables for color and font */
+:root {
+  --Grayish-blue: hsl(237, 18%, 59%);
+  --Soft-red: hsl(345, 95%, 68%);
+  --White: hsl(0, 0%, 100%);
+  --Dark-desaturated-blue: hsl(236, 21%, 26%);
+  --Very-dark-blue: hsl(235, 16%, 14%);
+  --Very-mostly-blue: hsl(234, 17%, 12%);
+  --main-font: "Red Hat Text", sans-serif; /* Define the main font family */
+}
+
+* {
   margin: 0;
-  font-family: "Red Hat Text", sans-serif;
-  background-color: hsl(234, 17%, 12%);
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--main-font); /* Set the global font family */
 }
 
 /* Media query for Desktop view */
-@media only screen and (min-width: 601px) {
-  #stars {
-    width: 100%;
-    height: 100%;
-  }
-  .container {
-    position: relative;
-    text-align: center;
-    color: white;
-    width: 100%;
-    height: 100%;
-  }
-  .centered {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: "Red Hat Text", sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 5px;
-  }
-  .bottom {
-    position: absolute;
-    top: 80%;
-    width: auto;
-  }
-  .social-icons {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    bottom: 100px;
-    left: 43%;
-  }
-  .social-icon {
-    color: #fff;
-    width: 20px;
-    height: 20px;
-    flex-direction: row;
-    display: flex;
-    margin-right: 15px;
-    top: 60%;
-  }
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    width: 20px;
-    opacity: 0;
-    transition: 0.5s ease;
-    background-color: hsl(345, 95%, 68%);
-  }
-
-  .social-icons:hover .overlay {
-    opacity: 1;
-  }
-
-  /*coutdwon*/
+body {
+  background-color: var(--Very-mostly-blue);
+  color: var(--Soft-red);
+  font-weight: 700;
 }
 
-/* Media query for Mobile view */
-@media only screen and (max-width: 600px) {
-  #stars {
-    width: 100%;
-    height: auto;
-  }
-  .container {
-    position: relative;
-    text-align: center;
-    color: white;
-    width: 100%;
-    height: auto;
-  }
-  .centered {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    width: 300px;
-    transform: translate(-50%, -50%);
-    font-family: "Red Hat Text", sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 5px;
-  }
-  .bottom {
-    position: absolute;
-    margin-top: 500px;
-  }
-  #hills {
-    width: 100%;
-    height: 200px;
-  }
-  .social-icons {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    bottom: 70px;
-    left: 40%;
-  }
-  .social-icon {
-    color: #fff;
-    width: 20px;
-    height: 20px;
-    flex-direction: row;
-    display: flex;
-    margin-right: 15px;
-    top: 50%;
-  }
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    width: 20px;
-    opacity: 0;
-    transition: 0.5s ease;
-    background-color: hsl(345, 95%, 68%);
-  }
+/* Styling for the main section of the page */
+.section {
+  height: 96vh; /*It is a unit of measurement relative to the height of the viewport or the browser window.*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 
-  .social-icons:hover .overlay {
-    opacity: 1;
+/* Styling for the main countdown timer container */
+.main_timer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Styling for individual timer components */
+.timer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 48px;
+  width: 100%;
+}
+
+/* Styling for the top and bottom halfs of each timer */
+.top,
+.bottom,
+.timer .bottom-flip,
+.timer .top-flip {
+  height: 0.85em; /* em is a unit of measurement that is relative to the font-size of the element*/
+  width: 90px;
+  line-height: 1;
+  padding: 0.35em;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+/* Styling for the top and bottom halfss during the flip animation */
+.top,
+.timer .top-flip {
+  background-color: var(--Dark-desaturated-blue);
+  filter: brightness(0.9); /*adjust the brightness of an element.*/
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.top {
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.bottom,
+.timer .bottom-flip {
+  background-color: var(--Dark-desaturated-blue);
+  align-items: flex-end; /* aligns the items to the end of the cross-axis.*/
+  height: 41px;
+}
+
+.bottom {
+  box-shadow: 0px 6px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the top half flip animation */
+.timer .top-flip {
+  /*The name of the animation is top-flip*/
+  position: absolute;
+  width: 100%;
+  animation: flip-top 250ms ease-in; /*The duration of the animation,,,, animation starts slowly and then accelerates.*/
+  transform-origin: bottom; /*the  rotation will be centered around the bottom edge of the element.*/
+}
+
+/* Keyframe animation for flipping the top half of the timer */
+@keyframes flip-top {
+  /*(end of the animation*/
+  100% {
+    /* Describes the transformation that occurs at the 100% keyframe. */
+    transform: rotateX(
+      90deg
+    ); /* it rotates the element around the x-axis by 90 degrees.*/
+  }
+}
+
+/* Styling for the bottom half flip animation */
+.timer .bottom-flip {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  animation: flip-bottom 250ms ease-in-out 250ms; /*flip-bottom: The name of the animation.,ease-in-out means that the animation starts slowly, accelerates in the middle, and then slows down again towards the end.*/
+  transform-origin: top;
+  transform: rotateX(90deg); /*90 degree rotate*/
+}
+
+/* Keyframe animation for flipping the bottom half of the timer */
+@keyframes flip-bottom {
+  100% {
+    transform: rotateX(0deg); /* end of the animation*/
+  }
+}
+
+/* Styling for the main title */
+.main_title {
+  color: var(--White);
+  font-size: 18px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 100px 0;
+}
+
+/* Styling for individual countdown timer components */
+.component {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 180px;
+}
+
+/* Styling for the decorative elements before and after the countdown components */
+.component::before,
+.component::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--Very-mostly-blue);
+  z-index: 50;
+}
+
+/* Styling for the decorative element before the countdown components */
+.component::before {
+  left: -5px;
+  top: 35px;
+}
+
+/* Styling for the decorative element after the countdown components */
+.component::after {
+  right: -5px;
+  top: 35px;
+}
+
+/* Styling for the title within the countdown component */
+.component .title {
+  color: var(--Grayish-blue);
+  font-family: var(--main-font);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+
+/* Styling for background images */
+.bg_stars,
+.bg_hills {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  z-index: 0;
+}
+
+/* Styling for social media icons */
+.socials i {
+  position: relative;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--Grayish-blue);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Styling for social media icons on hover */
+.socials i:hover {
+  color: var(--Soft-red);
+}
+
+/* Styling for the stars background image */
+.bg_stars {
+  top: 0;
+}
+
+/* Styling for the hills background image */
+.bg_hills {
+  bottom: 0;
+}
+
+/* Styling for the social media icons container */
+.socials {
+  display: flex;
+  gap: 20px;
+}
+
+/* Media query for mobile screens */
+@media screen and (max-width: 600px) {
+  .section {
+    height: 100vh;
+  }
+  .timer {
+    font-size: 30px;
+  }
+  .main_timer {
+    gap: 15px;
+  }
+  .top,
+  .bottom,
+  .timer .bottom-flip,
+  .timer .top-flip {
+    height: 0.85em;
+    width: 60px;
+  }
+  .component .title {
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .component::after {
+    right: -4px;
+    top: 20px;
+    width: 8px;
+    height: 8px;
+  }
+  .component::before {
+    left: -4px;
+    top: 20px;
+    width: 8px;
+    height: 8px;
   }
 }
