@@ -254,4 +254,24 @@ body {
     width: 8px;
     height: 8px;
   }
+  /* Styling for social media icons */
+  .socials i {
+    position: relative;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--Grayish-blue);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  /* Styling for social media icons on hover */
+  .socials i:hover {
+    color: var(--Soft-red);
+  }
+  /* Styling for the social media icons container */
+  .socials {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
 }
