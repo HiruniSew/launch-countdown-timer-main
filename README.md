@@ -11,4 +11,4 @@ Users should be able to:
 ### Screenshot
 
 
-##medium platform link :https://medium.com/@hirunisew99/javascript-variables-4da3c01abe09
+
